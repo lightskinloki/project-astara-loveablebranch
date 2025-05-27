@@ -1,6 +1,6 @@
 
 import Phaser from 'https://esm.sh/phaser@3.80.1';
-import Constants from 'constants';
+import Constants from './constants.js';
 
 class WorldGenerator {
     constructor(scene, options = {}) {
