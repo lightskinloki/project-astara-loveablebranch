@@ -1,14 +1,18 @@
 
 import { defineConfig } from 'vite'
+import { componentTagger } from "lovable-tagger";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   server: {
+    host: "::",
     port: 8080,
-    open: true
   },
+  plugins: [
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: true
   }
-})
+}))
