@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Procedural World</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            color: #00ff41;
+        }
+        
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        #renderDiv {
+            border: 2px solid #00ff41;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            background: #000;
+        }
+        
+        #controls {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #00ff41;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+        
+        .control-group {
+            margin: 5px 0;
+        }
+        
+        .key {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin: 0 2px;
+        }
+        
+        #title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+            letter-spacing: 2px;
+        }
+        
+        #subtitle {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="title">INFINITE PROCEDURAL WORLD</div>
+        <div id="subtitle">Explore • Mine • Survive</div>
+        <div id="renderDiv"></div>
+        <div id="controls">
+            <div class="control-group">
+                <span class="key">←→</span> Move Left/Right
+                <span class="key">↑</span> Jump
+            </div>
+            <div class="control-group">
+                <span class="key">Left Click</span> Mine/Harvest
+            </div>
+            <div class="control-group">
+                Watch your health and collect resources to survive!
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
