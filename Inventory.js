@@ -1,83 +1,44 @@
-// Placeholder for Inventory management class
-// Will handle adding/removing resources and checking crafting recipes
 
 class Inventory {
     constructor() {
         this.items = {
+            wood: 0,
             stone: 0,
             dirt: 0,
-            wood: 0, // Was potentially grass before, now explicitly wood for forest surface
             sand: 0,
-            leaves: 0, // New resource
-            red_petals: 0,
-            yellow_petals: 0,
-            plant_fibers: 0, // For ferns
-            red_mushroom: 0,
-            brown_mushroom: 0,
-            vine_segment: 0,
-            grass_blades: 0,
-            moss_clump: 0,
-            clover_leaf: 0,
-            decayed_wood: 0,
-            red_berries: 0,
-            blue_berries: 0,
-            shelf_fungus_cap: 0,
-            large_leaf: 0,
-            basic_block: 0, // Example crafted item
+            leaves: 0
         };
-        console.log('Inventory initialized');
     }
 
-    addResource(resourceType, amount = 1) {
-        if (this.items.hasOwnProperty(resourceType)) {
-            this.items[resourceType] += amount;
-            console.log(`Added ${amount} ${resourceType}. Total: ${this.items[resourceType]}`);
-            // Trigger UI update if needed
+    addResource(type, amount = 1) {
+        if (this.items.hasOwnProperty(type)) {
+            this.items[type] += amount;
+            console.log(`Added ${amount} ${type}. Total: ${this.items[type]}`);
         } else {
-            console.warn(`Unknown resource type: ${resourceType}`);
+            this.items[type] = amount;
+            console.log(`Added new resource: ${amount} ${type}`);
         }
     }
 
-    removeResource(resourceType, amount = 1) {
-         if (this.items.hasOwnProperty(resourceType) && this.items[resourceType] >= amount) {
-            this.items[resourceType] -= amount;
-            console.log(`Removed ${amount} ${resourceType}. Total: ${this.items[resourceType]}`);
-             // Trigger UI update if needed
+    removeResource(type, amount = 1) {
+        if (this.items.hasOwnProperty(type) && this.items[type] >= amount) {
+            this.items[type] -= amount;
             return true;
         }
-        console.log(`Not enough ${resourceType} to remove ${amount}.`);
         return false;
     }
 
-    hasResources(requirements) {
-        // requirements = { stone: 2 }
-        for (const resourceType in requirements) {
-            if (!this.items.hasOwnProperty(resourceType) || this.items[resourceType] < requirements[resourceType]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    craftItem(recipe) {
-        // recipe = { ingredients: { stone: 2 }, result: { item: 'basic_block', amount: 1 } }
-        if (this.hasResources(recipe.ingredients)) {
-            // Remove ingredients
-            for (const resourceType in recipe.ingredients) {
-                this.removeResource(resourceType, recipe.ingredients[resourceType]);
-            }
-            // Add result
-            this.addResource(recipe.result.item, recipe.result.amount);
-            console.log(`Crafted ${recipe.result.amount} ${recipe.result.item}`);
-            return true;
-        }
-        console.log('Cannot craft: Insufficient resources.');
-        return false;
+    getResource(type) {
+        return this.items[type] || 0;
     }
 
     getInventoryState() {
-        // Return a copy or formatted string for UI display
         return { ...this.items };
     }
+
+    hasResource(type, amount = 1) {
+        return this.getResource(type) >= amount;
+    }
 }
-export default Inventory; // Make class available for import
+
+export default Inventory;
