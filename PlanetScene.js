@@ -1,8 +1,8 @@
 import Phaser from 'https://esm.sh/phaser@3.80.1';
-import Constants from 'constants';
-import WorldGenerator from 'WorldGenerator';
-import Inventory from 'Inventory';
-import UIManager from 'UIManager';
+import Constants from './constants.js';
+import WorldGenerator from './WorldGenerator.js';
+import Inventory from './Inventory.js';
+import UIManager from './UIManager.js';
 
 class PlanetScene extends Phaser.Scene {
     constructor() {
