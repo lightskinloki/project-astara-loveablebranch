@@ -1,7 +1,8 @@
 import Phaser from 'https://esm.sh/phaser@3.80.1';
-import Constants from 'constants';
-import PlanetScene from 'PlanetScene';
-import SystemScene from 'SystemScene';
+import Constants from './constants.js';
+import PlanetScene from './PlanetScene.js';
+import SystemScene from './SystemScene.js';
+
 // Placeholder check for WebGL support
 const supportsWebGL = () => {
     try {
